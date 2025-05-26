@@ -1,6 +1,6 @@
-# 🎮 Game Engine Demo: Starship & RabbitHammer
+# Game Engine Demo: Starship & RabbitHammer
 
-## 📌 Description
+## Description
 
 This repository contains two mini-games built to test the versatility of a custom-made game engine.
 
@@ -9,37 +9,37 @@ This repository contains two mini-games built to test the versatility of a custo
 
 ---
 
-## 🚀 Starship
+## Starship
 
 In **Starship**, the player uses a **Pistol** to shoot down or capture enemies.
 
-### 🎯 Objective
+### Objective
 - Shoot or capture **20 enemies**.
 - If **3 enemies** get past the player, the game is lost.
 
-### 🕹 Controls
+### Controls
 - Aim with the **mouse**.
 - Shoot by **clicking**.
 
 ---
 
-## 🐰 RabbitHammer
+## RabbitHammer
 
 In **RabbitHammer**, the player uses a **Sledgehammer** to smash enemies appearing on the screen.
 
-### 🎯 Objective
+### Objective
 - Smash **20 enemies**.
 - If **3 enemies** disappear before being smashed, the game is lost.
 
-### 🕹 Controls
+### Controls
 - Move the hammer with the **mouse**.
 - Hit by **clicking**.
 
 ---
 
-## 🛠️ Build & Run Instructions
+## Build & Run Instructions
 
-### 📁 Resource Paths
+### Resource Paths
 
 Resource files are stored in the `resources/` directory with three subfolders:
 
@@ -49,6 +49,6 @@ Resource files are stored in the `resources/` directory with three subfolders:
 
 All assets are loaded using paths defined in `constants.h`.
 
-#### 🧩 Example:
+#### Example:
 ```cpp
 shipTexture = IMG_LoadTexture(sys.ren, (constants::gResPath + "images/Enemy.png").c_str());
