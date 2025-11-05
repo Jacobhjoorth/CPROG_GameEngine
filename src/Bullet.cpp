@@ -33,14 +33,14 @@ void Bullet::draw() const
 
 void Bullet::tick()
 {
-    killOnCollision(); // Check collision with enemies
+    killOnCollision();
 
     counter++;
     if (getRect().y <= 0) // If bullet goes off-screen (top)
     {
-        ge.removeSprite(this); // Remove bullet from game
+        ge.removeSprite(this);
     }
-    else if (counter % 1 == 0) // Every tick (could be used to control speed)
+    else if (counter % 1 == 0)
     {
         rect.y -= 6; // Move bullet upward
     }
