@@ -8,25 +8,21 @@
 
 using namespace GameEngine;
 
-// Constructor: Initializes position and loads pistol texture
 Pistol::Pistol() : Sprite(500, 570, 200, 200)
 {
     pistolTexture = IMG_LoadTexture(sys.get_ren(), (constants::gResPath + "images/Player.png").c_str());
 }
 
-// Factory method to create a new pistol instance
 Pistol *Pistol::getInstance()
 {
     return new Pistol();
 }
 
-// Destructor: free the texture memory
 Pistol::~Pistol()
 {
     SDL_DestroyTexture(pistolTexture);
 }
 
-// Called every frame
 void Pistol::tick()
 {
     followMouse();     // Make pistol follow cursor
@@ -41,14 +37,12 @@ void Pistol::mouseDown(int x, int y)
     sys.playSound("sounds/GunshotSound.wav");
 }
 
-// Renders the pistol to the screen
 void Pistol::draw() const
 {
     const SDL_Rect &rect = getRect();
     SDL_RenderCopy(sys.get_ren(), pistolTexture, NULL, &rect);
 }
 
-// Updates pistol position based on mouse
 void Pistol::followMouse()
 {
     int mouseX, mouseY;
@@ -56,13 +50,11 @@ void Pistol::followMouse()
     rect.x = mouseX - rect.w / 2;
 }
 
-// Indicates pistol should persist after restart
 bool Pistol::deleteAtRestart() const
 {
     return false;
 }
 
-// Checks if pistol overlaps an enemy and removes it
 void Pistol::killOnCollision()
 {
     std::vector<Sprite *> spritesToRemove;
