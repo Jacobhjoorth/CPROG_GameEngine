@@ -41,7 +41,6 @@ void EnemySpawner::randomSpawnShip()
     }
 }
 
-// Called every frame: decides whether to spawn rabbits or ships
 void EnemySpawner::tick()
 {
     // Uncomment one of the following for the appropriate game mode
@@ -58,16 +57,13 @@ EnemySpawner::EnemySpawner() : Sprite(100, 100, 100, 100) {}
 
 EnemySpawner::~EnemySpawner() {}
 
-// Factory method for creating an instance
 EnemySpawner *EnemySpawner::getInstance()
 {
     return new EnemySpawner();
 }
 
-// This object is invisible; no drawing needed
 void EnemySpawner::draw() const {}
 
-// This object should persist through restarts
 bool EnemySpawner::deleteAtRestart() const
 {
     return false;
