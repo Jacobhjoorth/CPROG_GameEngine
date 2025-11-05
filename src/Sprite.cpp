@@ -2,7 +2,6 @@
 
 namespace GameEngine
 {
-    // Constructor: stores sprite position and dimensions
     Sprite::Sprite(int x, int y, int width, int height) : rect({x, y, width, height}) {}
 
     Sprite::~Sprite() {}
@@ -16,25 +15,21 @@ namespace GameEngine
     // Placeholder for per-frame logic
     void tick() {}
 
-    // Returns the rectangle representing the sprite's bounds
     SDL_Rect Sprite::getRect() const
     {
         return rect;
     }
 
-    // Returns identifier string for type-checking
     std::string Sprite::getType() const
     {
         return "Sprite";
     }
 
-    // Whether the sprite should be removed on game restart
     bool Sprite::deleteAtRestart() const
     {
         return false;
     }
 
-    // AABB collision check with another sprite
     bool Sprite::checkCollision(Sprite *other)
     {
         const SDL_Rect &rect1 = getRect();
