@@ -9,43 +9,36 @@ namespace GameEngine
 {
 #define FPS 100 // Frames per second target
 
-	// Increments enemy kill counter
 	void GameEngine::addEnemyKilled()
 	{
 		enemyKilledCounter++;
 	}
 
-	// Decrease player health by one
 	void GameEngine::reducePlayerHealth()
 	{
 		playerHealthCounter--;
 	}
 
-	// Set maximum player health
 	void GameEngine::setTotalHealth(int health)
 	{
 		playerHealth = health;
 	}
 
-	// Set current player health
 	void GameEngine::setCurrentHealth(int health)
 	{
 		playerHealthCounter = health;
 	}
 
-	// Set total enemies required to win
 	void GameEngine::setEnemiesToKill(int other)
 	{
 		enemiesToKill = other;
 	}
 
-	// Set the UI text label for enemies-to-kill
 	void GameEngine::setEnemiesToKillTxt(std::string name)
 	{
 		enemiesToKillTxt = name;
 	}
 
-	// Check whether mouse is being held down
 	bool GameEngine::isMouseDown()
 	{
 		if (mouseDown)
@@ -55,13 +48,11 @@ namespace GameEngine
 		return false;
 	}
 
-	// Add a sprite to the game in the next frame
 	void GameEngine::addSprite(Sprite *comp)
 	{
 		added.push_back(comp);
 	}
 
-	// Mark a sprite for removal
 	void GameEngine::removeSprite(Sprite *comp)
 	{
 		removed.push_back(comp);
@@ -73,7 +64,6 @@ namespace GameEngine
 		return comps;
 	}
 
-	// Reset the game state to initial conditions
 	void GameEngine::resetGame()
 	{
 		// Delete all sprites marked for deletion
@@ -150,7 +140,6 @@ namespace GameEngine
 			}
 		}
 
-		// Restart the game state
 		resetGame();
 	}
 
