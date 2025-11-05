@@ -7,20 +7,18 @@
 
 using namespace GameEngine;
 
-// Static factory method to create a bullet at a given x-position
+// Create a bullet at a given x-position
 Bullet *Bullet::getInstance(int x)
 {
     return new Bullet(x);
 }
 
-// Constructor: Initializes bullet's position and loads its texture
 Bullet::Bullet(int x) : Sprite(x, 550, 20, 20) // Spawn bullet at x, y=550, with 20x20 size
 {
     // Load bullet image as SDL texture
     texture = IMG_LoadTexture(sys.get_ren(), (constants::gResPath + "images/Bullet.png").c_str());
 }
 
-// Destructor: Free the texture resource to avoid memory leaks
 Bullet::~Bullet()
 {
     SDL_DestroyTexture(texture);
@@ -33,7 +31,6 @@ void Bullet::draw() const
     SDL_RenderCopy(sys.get_ren(), texture, NULL, &rect);
 }
 
-// Game logic executed every frame
 void Bullet::tick()
 {
     killOnCollision(); // Check collision with enemies
@@ -49,10 +46,9 @@ void Bullet::tick()
     }
 }
 
-// Checks collision with enemy ships and removes both the bullet and the enemy
 void Bullet::killOnCollision()
 {
-    std::vector<Sprite *> spritesToRemove; // Collect sprites to be removed
+    std::vector<Sprite *> spritesToRemove;
 
     for (Sprite *c : ge.getComps()) // Loop through all game sprites
     {
@@ -61,7 +57,7 @@ void Bullet::killOnCollision()
         {
             spritesToRemove.push_back(c);    // Mark enemy for deletion
             spritesToRemove.push_back(this); // Mark bullet for deletion
-            ge.addEnemyKilled();             // Increment kill counter
+            ge.addEnemyKilled();         
         }
     }
 
@@ -72,7 +68,6 @@ void Bullet::killOnCollision()
     }
 }
 
-// Specifies that this object should be deleted when game resets
 bool Bullet::deleteAtRestart() const
 {
     return true;
