@@ -7,25 +7,21 @@
 
 using namespace GameEngine;
 
-// Constructor: Initializes sledgehammer and loads texture
 Sledgehammer::Sledgehammer() : Sprite(200, 200, 20, 20)
 {
     sledgehammerTexture = IMG_LoadTexture(sys.get_ren(), (constants::gResPath + "images/Sledgehammer.png").c_str());
 }
 
-// Factory method to create sledgehammer
 Sledgehammer *Sledgehammer::getInstance()
 {
     return new Sledgehammer();
 }
 
-// Destructor: Clean up texture
 Sledgehammer::~Sledgehammer()
 {
     SDL_DestroyTexture(sledgehammerTexture);
 }
 
-// Called every frame: follows mouse position
 void Sledgehammer::tick()
 {
     followMouse();
@@ -53,14 +49,12 @@ void Sledgehammer::mouseDown(int x, int y)
     }
 }
 
-// Render sledgehammer on screen
 void Sledgehammer::draw() const
 {
     const SDL_Rect &rect = getRect();
     SDL_RenderCopy(sys.get_ren(), sledgehammerTexture, NULL, &rect);
 }
 
-// Updates hammer position to cursor
 void Sledgehammer::followMouse()
 {
     int mouseX, mouseY;
@@ -69,7 +63,6 @@ void Sledgehammer::followMouse()
     rect.y = mouseY;
 }
 
-// Sledgehammer persists between restarts
 bool Sledgehammer::deleteAtRestart() const
 {
     return false;
