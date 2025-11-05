@@ -7,15 +7,13 @@
 
 using namespace GameEngine;
 
-// Create a bullet at a given x-position
 Bullet *Bullet::getInstance(int x)
 {
     return new Bullet(x);
 }
 
-Bullet::Bullet(int x) : Sprite(x, 550, 20, 20) // Spawn bullet at x, y=550, with 20x20 size
+Bullet::Bullet(int x) : Sprite(x, 550, 20, 20)
 {
-    // Load bullet image as SDL texture
     texture = IMG_LoadTexture(sys.get_ren(), (constants::gResPath + "images/Bullet.png").c_str());
 }
 
@@ -24,7 +22,6 @@ Bullet::~Bullet()
     SDL_DestroyTexture(texture);
 }
 
-// Draw the bullet using SDL
 void Bullet::draw() const
 {
     const SDL_Rect &rect = getRect();
